@@ -1,6 +1,6 @@
 -moz 就不写了，直接用 chrome 看吧！
 
-# transition(过渡) #
+# Transition(过渡) #
 
 Internet Explorer 9 以及更早版本的浏览器不支持 transition 属性。
 
@@ -22,4 +22,14 @@ Internet Explorer 9 以及更早版本的浏览器不支持 transition 属性。
   <li>cubic-bezier(n,n,n,n): 在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。</li>
 </ul>
 
-<b>cubic-bezier</b>贝塞尔曲线 http://matthewlein.com/ceaser/
+<code>cubic-bezier</code>贝塞尔曲线 http://matthewlein.com/ceaser/
+
+# Transform(变换) #
+
+<b>-webkit-transform-style: preserve-3d</b> (This is an experimental technology)
+
+变换 3d 场景
+
+<b>-webkit-perspective</b>
+
+perspective 属性定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。
