@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>旋转轮播图</title>
+  <style type="text/css" id="css">
+    .box {
+      width: 760px;
+      margin: 100px auto;
+    }
+    #picList {
+      margin: 0;
+      padding: 0;
+      height: 300px;
+      list-style: none;
+      -webkit-perspective: 800px;
+    }
+    #picList li {
+      position: relative;
+      width: 20px;
+      height: 300px;
+      float: left;
+      -webkit-transform-style: preserve-3d;
+      -webkit-transform: translateZ(-150px);
+    }
+    #picList a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #picList a:nth-of-type(1) {
+      background: url('imgs/1.jpg') no-repeat;
+      -webkit-transform: translateZ(150px);
+    }
+    #picList a:nth-of-type(2) {
+      background: url('imgs/2.jpg') no-repeat;
+      -webkit-transform-origin: top;
+      -webkit-transform: translateZ(-150px) rotateX(90deg);
+    }
+    #picList a:nth-of-type(3) {
+      background: url('imgs/3.jpg') no-repeat;
+      -webkit-transform: translateZ(-150px) rotateX(180deg);
+    }
+    #picList a:nth-of-type(4) {
+      background: url('imgs/4.jpg') no-repeat;
+      -webkit-transform-origin: bottom;
+      -webkit-transform: translateZ(-150px) rotateX(-90deg);
+    }
+    /*侧面*/
+    #picList span {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      background: #333;
+      top: 0;
+    }
+    #picList span:nth-of-type(1) {
+      left: 0;
+      -webkit-transform-origin: left;
+      -webkit-transform: translateZ(150px) rotateY(90deg);
+    }
+    #picList span:nth-of-type(2) {
+      right: 0;
+      -webkit-transform-origin: right;
+      -webkit-transform: translateZ(150px) rotateY(-90deg);
+    }
+
+    #btns {
+      padding: 50px;
+      height: 30px;
+      list-style: none;
+    }
+    #btns li {
+      width: 30px;
+      height: 30px;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 30px;
+      margin: 0 10px;
+      float: left;
+      border-radius: 50%;
+    }
+    #btns .active {
+      background: #f60;
+    }
+  </style>
+
+  <script type="text/javascript">
+    window.onload = function() {
+
+      var oPicList = document.getElementById('picList');
+      var oCss = document.getElementById('css');
+      var aBtns = document.getElementById('btns').getElementsByTagName('li');
+      var aPic = [];
+      var iLiW = 20;
+      var sHtml = '';
+      var sStyle = '';
+      var iZindex = 0;
+      var iLength = oPicList.clientWidth/iLiW; //计算有多少个立方体
+
+      for(var i=0; i<iLength; i++) {
+
+        i>iLength/2?iZindex--:iZindex++; //视点在中间，防止右边的露出侧面
+        sStyle += '#picList li:nth-of-type(' + (i+1) + '){ z-index:' + iZindex + '}';
+        sStyle += '#picList li:nth-of-type(' + (i+1) +') a{background-position:-' + iLiW*i + 'px 0}';
+
+
+        sHtml += '<li><a href="javascript:void(0);"></a><a href="javascript:void(0);"></a><a href="javascript:void(0);"></a><a href="javascript:void(0);"></a><span></span><span></span></li>';
+
+      }
+
+      oPicList.innerHTML = sHtml;
+      oCss.innerHTML += sStyle;
+
+      aPic = oPicList.getElementsByTagName('li');
+      for(var i=0,len=aBtn.legth;i++) {
+        aBtn[i].onclick = (function(a){
+
+          return function(){
+            for(var i=0,len=aPic.length; i++) {
+
+            }
+          }
+
+        })(i);
+      }
+
+    }
+  </script>
+</head>
+<body>
+  <div class="box">
+    <ul id="picList">
+      <!-- <li>
+        <a href="javascript:void(0);"></a>
+        <a href="javascript:void(0);"></a>
+        <a href="javascript:void(0);"></a>
+        <a href="javascript:void(0);"></a>
+        <span></span>
+        <span></span>
+      </li> -->
+    </ul>
+    <ol id="btns">
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ol>
+  </div>
+</body>
+</html>
